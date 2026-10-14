@@ -349,3 +349,69 @@ tbody tr:last-child td { border-bottom: none; }
   margin: 3px 0 5px; letter-spacing: -0.005em;
 }
 .card-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; }
+
+/* ============================================================
+   Cheatsheet — denser than the prose pages on purpose.
+   Lives in the wide track, so not capped at --measure.
+   ============================================================ */
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 14px;
+  margin: 20px 0 30px;
+}
+.sheet-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.sheet-card.flag { background: var(--bad-soft); border-color: transparent; }
+.sheet-card.say  { background: var(--good-soft); border-color: transparent; }
+.sheet-card h4 {
+  margin: 0 0 9px; font-size: 11px; font-weight: 680;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-text);
+}
+.sheet-card.flag h4 { color: var(--bad); }
+.sheet-card.say h4  { color: var(--good); }
+.sheet-card ul { margin: 0; padding-left: 17px; font-size: 13.5px; line-height: 1.55; }
+.sheet-card li { margin-bottom: 6px; }
+.sheet-card li:last-child { margin-bottom: 0; }
+.sheet-card p { font-size: 13.5px; margin: 0 0 8px; }
+
+/* number strip */
+.nums {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 10px;
+  margin: 20px 0 30px;
+}
+.num {
+  background: var(--bg-raised); border: 1px solid var(--border);
+  border-radius: 9px; padding: 11px 13px;
+}
+.num-v { font-size: 19px; font-weight: 690; letter-spacing: -0.02em; line-height: 1.2; }
+.num-l { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; line-height: 1.4; }
+
+/* numbered "do this in order" list */
+.steps { counter-reset: s; list-style: none; padding-left: 0; margin: 18px 0 26px; }
+.steps li {
+  counter-increment: s; position: relative;
+  padding: 8px 0 8px 40px; border-bottom: 1px solid var(--border);
+  font-size: 14.5px;
+}
+.steps li:last-child { border-bottom: none; }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: 9px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent-text);
+  font: 650 11px var(--mono); display: grid; place-items: center;
+}
+
+@media print {
+  .sidebar, .theme-btn { display: none; }
+  .page { max-width: none; padding: 0; }
+  .sheet-card, .num, .figure { break-inside: avoid; }
+  body { background: #fff; color: #000; }
+}
