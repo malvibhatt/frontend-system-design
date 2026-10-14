@@ -13,17 +13,31 @@ export default function Sidebar() {
       {nav.map((group) => (
         <nav className="nav-group" key={group.group}>
           <div className="nav-label">{group.group}</div>
-          {group.items.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === "/"}
-              className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}
-            >
-              <span className="nav-num">{item.num}</span>
-              <span>{item.label}</span>
-            </NavLink>
-          ))}
+          {group.items.map((item) =>
+            item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+              >
+                <span className="nav-num">{item.num}</span>
+                <span>{item.label}</span>
+                <span className="nav-ext" aria-label="opens in a new tab">↗</span>
+              </a>
+            ) : (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}
+              >
+                <span className="nav-num">{item.num}</span>
+                <span>{item.label}</span>
+              </NavLink>
+            )
+          )}
         </nav>
       ))}
 

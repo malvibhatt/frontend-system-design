@@ -415,3 +415,7 @@ tbody tr:last-child td { border-bottom: none; }
   .sheet-card, .num, .figure { break-inside: avoid; }
   body { background: #fff; color: #000; }
 }
+
+/* External link marker in the sidebar */
+.nav-ext { margin-left: auto; font-size: 11px; color: var(--text-faint); }
+.nav-link:hover .nav-ext { color: var(--text-dim); }
