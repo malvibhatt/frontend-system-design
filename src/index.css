@@ -1,0 +1,326 @@
+/* ============================================================
+   Design tokens — light is the base, dark overrides the roles.
+   Every colour used anywhere in the app comes from here.
+   ============================================================ */
+:root {
+  --bg:          #fbfaf8;
+  --bg-raised:   #ffffff;
+  --bg-sunken:   #f2f1ed;
+  --text:        #1b1b19;
+  --text-dim:    #6c6b64;
+  --text-faint:  #94938b;
+  --border:      #e5e3dd;
+  --border-firm: #d3d0c8;
+
+  --accent:      #3a5ccc;
+  --accent-soft: #e8edfd;
+  --accent-text: #2a46a8;
+
+  --good:        #1d7a53;
+  --good-soft:   #e3f4ec;
+  --warn:        #9a6410;
+  --warn-soft:   #fcf1dd;
+  --bad:         #ab3030;
+  --bad-soft:    #fbe9e7;
+
+  /* diagram palette */
+  --d-box:       #ffffff;
+  --d-box-line:  #c9c6bd;
+  --d-fill-1:    #e8edfd;  /* browser / client */
+  --d-fill-2:    #e3f4ec;  /* network / server */
+  --d-fill-3:    #fcf1dd;  /* work / compute   */
+  --d-fill-4:    #f1ecfb;  /* storage / cache  */
+  --d-line:      #8d8a81;
+  --d-text:      #1b1b19;
+  --d-text-dim:  #6c6b64;
+  --d-lane:      #f6f5f1;
+
+  --radius: 10px;
+  --sidebar-w: 268px;
+  --measure: 740px;   /* prose: capped for readable line length */
+  --wide: 1020px;     /* figures + tables: free to use the full column */
+
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --bg:          #141417;
+    --bg-raised:   #1c1c20;
+    --bg-sunken:   #101012;
+    --text:        #ececeF;
+    --text-dim:    #9d9da6;
+    --text-faint:  #71717a;
+    --border:      #2b2b31;
+    --border-firm: #3c3c44;
+
+    --accent:      #8aa3f8;
+    --accent-soft: #1e2440;
+    --accent-text: #a9bcff;
+
+    --good:        #5dd3a0;
+    --good-soft:   #16302a;
+    --warn:        #e0b25f;
+    --warn-soft:   #342a18;
+    --bad:         #f08a84;
+    --bad-soft:    #341d1d;
+
+    --d-box:       #1c1c20;
+    --d-box-line:  #44444d;
+    --d-fill-1:    #1e2440;
+    --d-fill-2:    #16302a;
+    --d-fill-3:    #342a18;
+    --d-fill-4:    #282140;
+    --d-line:      #7b7b86;
+    --d-text:      #ececeF;
+    --d-text-dim:  #9d9da6;
+    --d-lane:      #18181c;
+  }
+}
+
+[data-theme="dark"] {
+  --bg:          #141417;
+  --bg-raised:   #1c1c20;
+  --bg-sunken:   #101012;
+  --text:        #ececeF;
+  --text-dim:    #9d9da6;
+  --text-faint:  #71717a;
+  --border:      #2b2b31;
+  --border-firm: #3c3c44;
+
+  --accent:      #8aa3f8;
+  --accent-soft: #1e2440;
+  --accent-text: #a9bcff;
+
+  --good:        #5dd3a0;
+  --good-soft:   #16302a;
+  --warn:        #e0b25f;
+  --warn-soft:   #342a18;
+  --bad:         #f08a84;
+  --bad-soft:    #341d1d;
+
+  --d-box:       #1c1c20;
+  --d-box-line:  #44444d;
+  --d-fill-1:    #1e2440;
+  --d-fill-2:    #16302a;
+  --d-fill-3:    #342a18;
+  --d-fill-4:    #282140;
+  --d-line:      #7b7b86;
+  --d-text:      #ececeF;
+  --d-text-dim:  #9d9da6;
+  --d-lane:      #18181c;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.36em;
+}
+
+/* ============================================================
+   App shell
+   ============================================================ */
+.shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex: 0 0 var(--sidebar-w);
+  border-right: 1px solid var(--border);
+  background: var(--bg-sunken);
+  padding: 22px 16px 48px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand { display: block; margin-bottom: 4px; }
+.brand-title {
+  font-size: 15px; font-weight: 650; letter-spacing: -0.01em;
+  color: var(--text); margin: 0;
+}
+.brand-sub { font-size: 12px; color: var(--text-faint); margin: 2px 0 0; }
+
+.nav-group { margin-top: 24px; }
+.nav-label {
+  font-size: 10.5px; font-weight: 650; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--text-faint);
+  padding: 0 10px; margin-bottom: 6px;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 6px 10px; border-radius: 7px;
+  font-size: 13.5px; color: var(--text-dim);
+  text-decoration: none; line-height: 1.4;
+}
+.nav-link:hover { background: var(--bg-raised); color: var(--text); text-decoration: none; }
+.nav-link.active { background: var(--accent-soft); color: var(--accent-text); font-weight: 560; }
+.nav-num {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--text-faint); width: 14px; flex: 0 0 14px;
+}
+.nav-link.active .nav-num { color: var(--accent-text); }
+
+.theme-btn {
+  margin-top: 28px; width: 100%;
+  background: var(--bg-raised); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 7px;
+  padding: 7px 10px; font-size: 12.5px; font-family: var(--font);
+  cursor: pointer; text-align: left;
+}
+.theme-btn:hover { color: var(--text); border-color: var(--border-firm); }
+
+.main { flex: 1; min-width: 0; display: flex; justify-content: center; }
+.page { width: 100%; max-width: var(--wide); padding: 56px 44px 140px; }
+
+/* Text is held to a readable measure inside the wider column; figures
+   and tables are deliberately left to span the whole of it. */
+.page p,
+.page ul,
+.page ol,
+.page h1,
+.page h3,
+.page h4,
+.lede,
+.callout { max-width: var(--measure); }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+.eyebrow {
+  font-size: 11px; font-weight: 650; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent-text); margin: 0 0 10px;
+}
+.page h1 {
+  font-size: 34px; line-height: 1.2; letter-spacing: -0.022em;
+  font-weight: 680; margin: 0 0 14px;
+}
+.lede { font-size: 17.5px; color: var(--text-dim); margin: 0 0 8px; line-height: 1.6; }
+
+.page h2 {
+  font-size: 23px; letter-spacing: -0.015em; font-weight: 650;
+  margin: 56px 0 12px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.page h3 { font-size: 16.5px; font-weight: 640; margin: 32px 0 8px; letter-spacing: -0.005em; }
+.page h4 { font-size: 14px; font-weight: 640; margin: 22px 0 6px; color: var(--text-dim); }
+.page p { margin: 0 0 14px; }
+.page ul, .page ol { margin: 0 0 16px; padding-left: 22px; }
+.page li { margin-bottom: 7px; }
+
+/* ============================================================
+   Figure / diagram frame
+   ============================================================ */
+.figure { margin: 26px 0 30px; }
+.figure-scroll {
+  /* Hug the diagram's natural width so a narrow diagram isn't framed in
+     dead space — but never exceed the column, at which point the frame
+     itself scrolls. */
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+}
+/* The svg keeps its natural width and the frame scrolls, rather than
+   the svg shrinking until the labels are unreadable. The scrollbar
+   therefore lives inside the diagram, never on the page. */
+.figure svg { display: block; margin: 0 auto; height: auto; }
+.figure-scroll { overscroll-behavior-x: contain; }
+.figure-cap {
+  font-size: 12.5px; color: var(--text-faint);
+  margin-top: 9px; padding-left: 2px; line-height: 1.55;
+}
+.figure-cap b { color: var(--text-dim); font-weight: 600; }
+
+/* diagram text helpers */
+.d-title  { font: 650 12.5px var(--font); fill: var(--d-text); }
+.d-label  { font: 500 11.5px var(--font); fill: var(--d-text); }
+.d-small  { font: 500 10px var(--font);  fill: var(--d-text-dim); }
+.d-mono   { font: 500 10.5px var(--mono); fill: var(--d-text-dim); }
+.d-stroke { stroke: var(--d-line); fill: none; }
+
+/* ============================================================
+   Callouts
+   ============================================================ */
+.callout {
+  border-radius: var(--radius); padding: 14px 16px;
+  margin: 20px 0; font-size: 14.5px; line-height: 1.6;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout-tag {
+  display: block; font-size: 10.5px; font-weight: 680;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px;
+}
+.callout.why  { background: var(--accent-soft); border-color: transparent; }
+.callout.why  .callout-tag { color: var(--accent-text); }
+.callout.good { background: var(--good-soft); border-color: transparent; }
+.callout.good .callout-tag { color: var(--good); }
+.callout.warn { background: var(--warn-soft); border-color: transparent; }
+.callout.warn .callout-tag { color: var(--warn); }
+.callout.stale { background: var(--bad-soft); border-color: transparent; }
+.callout.stale .callout-tag { color: var(--bad); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-scroll { overflow-x: auto; margin: 20px 0 26px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td {
+  text-align: left; padding: 9px 12px;
+  border-bottom: 1px solid var(--border); vertical-align: top;
+}
+th {
+  font-size: 11px; font-weight: 650; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-faint);
+  border-bottom: 1px solid var(--border-firm);
+}
+tbody tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   Misc
+   ============================================================ */
+.placeholder {
+  border: 1px dashed var(--border-firm); border-radius: var(--radius);
+  padding: 32px; text-align: center; color: var(--text-faint); font-size: 14px;
+}
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 620;
+  padding: 2px 8px; border-radius: 20px;
+  background: var(--bg-sunken); border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+@media (max-width: 900px) {
+  .shell { flex-direction: column; }
+  .sidebar {
+    width: 100%; flex: none; height: auto; position: static;
+    border-right: none; border-bottom: 1px solid var(--border);
+  }
+  .page { padding: 32px 20px 100px; }
+  .page h1 { font-size: 27px; }
+}
