@@ -57,3 +57,35 @@ export function Table({ head, rows, strongFirst }) {
 export function Placeholder({ step }) {
   return <div className="placeholder">Written in step {step} of the build.</div>;
 }
+
+/* ---- Cheatsheet primitives ------------------------------------------- */
+
+export function Sheet({ children }) {
+  return <div className="sheet">{children}</div>;
+}
+
+export function SheetCard({ title, kind = "", items, children }) {
+  return (
+    <section className={`sheet-card ${kind}`}>
+      <h4>{title}</h4>
+      {items ? <ul>{items.map((it, i) => <li key={i}>{it}</li>)}</ul> : children}
+    </section>
+  );
+}
+
+export function Numbers({ items }) {
+  return (
+    <div className="nums">
+      {items.map((n) => (
+        <div className="num" key={n.label}>
+          <div className="num-v">{n.value}</div>
+          <div className="num-l">{n.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function Steps({ items }) {
+  return <ol className="steps">{items.map((it, i) => <li key={i}>{it}</li>)}</ol>;
+}
