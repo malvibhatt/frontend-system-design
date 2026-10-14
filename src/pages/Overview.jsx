@@ -167,7 +167,7 @@ export default function Overview() {
           ["Source of truth", "The server. You hold a copy.", "The browser. You are the truth."],
           ["Can it go stale?", "Yes — the moment you receive it", "No. It cannot disagree with anything."],
           ["Hard part", "Freshness, refetching, invalidation, retries", "Keeping it from sprawling"],
-          ["Reach for", <>TanStack Query, RTK Query, Apollo, RSC</>, <>useState, useReducer, Zustand, XState</>],
+          ["Reach for", "TanStack Query, RTK Query, Apollo, RSC", "useState, useReducer, Zustand, XState"],
         ]}
       />
 

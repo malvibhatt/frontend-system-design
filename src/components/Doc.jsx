@@ -31,7 +31,9 @@ export function Callout({ kind = "why", title, children }) {
   );
 }
 
-export function Table({ head, rows }) {
+/* `strongFirst` emphasises the first cell of each row, so callers can pass
+   plain strings instead of JSX and keep the data readable. */
+export function Table({ head, rows, strongFirst }) {
   return (
     <div className="table-scroll">
       <table>
@@ -40,7 +42,11 @@ export function Table({ head, rows }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
+            <tr key={i}>
+              {row.map((cell, j) => (
+                <td key={j}>{strongFirst && j === 0 ? <b>{cell}</b> : cell}</td>
+              ))}
+            </tr>
           ))}
         </tbody>
       </table>
