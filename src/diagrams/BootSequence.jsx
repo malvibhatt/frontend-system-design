@@ -32,7 +32,7 @@ const STEPS = [
   {
     file: "Sidebar.jsx  ·  Overview.jsx",
     tone: 1,
-    lines: ["Components run and return JSX. This is a description of a UI —",
+    lines: ["Components run and return JSX. This is a description of a UI, ",
             "nothing is in the DOM yet."],
   },
   {
@@ -44,7 +44,7 @@ const STEPS = [
   {
     file: "useEffect  /  data fetching",
     tone: 3,
-    lines: ["Effects run after the commit — so your first network request",
+    lines: ["Effects run after the commit, so your first network request",
             "leaves the browser after the first paint, not before it."],
   },
   {

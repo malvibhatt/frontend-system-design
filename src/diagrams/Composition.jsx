@@ -59,7 +59,7 @@ export default function Composition() {
       ))}
 
       <text className="d-small" x={20} y={268}>
-        Start at the left. Move right only when a real second use case arrives — not in anticipation of one.
+        Start at the left. Move right only when a real second use case arrives, not in anticipation of one.
       </text>
     </svg>
   );

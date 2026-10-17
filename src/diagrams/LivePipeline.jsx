@@ -7,7 +7,7 @@ const x = (i) => 20 + i * STEP;
 
 const STAGES = [
   { tone: 2, t: "Stream",       l: ["SSE connection", "delivering deltas"],        rate: "≈500 msg/s" },
-  { tone: 4, t: "Buffer",       l: ["Map keyed by", "vehicleId —", "last write wins"], rate: "no renders" },
+  { tone: 4, t: "Buffer",       l: ["Map keyed by", "vehicleId,", "last write wins"], rate: "no renders" },
   { tone: 3, t: "Flush on rAF", l: ["once per frame,", "whatever arrived"],        rate: "≤60/s" },
   { tone: 1, t: "Store",        l: ["one batched", "update"],                      rate: "≤60/s" },
   { tone: 1, t: "Render",       l: ["only markers that", "actually moved"],        rate: "≤60/s" },
@@ -53,7 +53,7 @@ export default function LivePipeline() {
         nobody could have seen.
       </text>
       <text className="d-small" x={20} y={206}>
-        The buffer discards them by overwriting the same key — which is why it is a Map and not a queue.
+        The buffer discards them by overwriting the same key, which is why it is a Map and not a queue.
       </text>
       <text className="d-small" x={20} y={230} style={{ fill: "var(--d-text)" }}>
         Without this stage, a busy depot renders itself to a standstill.

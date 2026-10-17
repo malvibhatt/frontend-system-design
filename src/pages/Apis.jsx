@@ -49,7 +49,7 @@ export default function Apis() {
           ],
           [
             "RPC / tRPC",
-            "TypeScript on both ends, one team, one repo — you want end-to-end types with no codegen step",
+            "TypeScript on both ends, one team, one repo. You want end-to-end types with no codegen step",
             "Couples client and server tightly; poor fit for public or long-lived APIs",
           ],
           [
@@ -63,7 +63,7 @@ export default function Apis() {
       <Callout kind="warn" title="The GraphQL trade nobody mentions">
         <p>
           GraphQL fixes over-fetching and breaks HTTP caching while doing it. Every query is a
-          POST to <code>/graphql</code>, so CDNs and the browser cache have nothing to key on —
+          POST to <code>/graphql</code>, so CDNs and the browser cache have nothing to key on,
           which is why you then need a normalised client cache, and often persisted queries, to
           get back what REST gave you for free. It is a worthwhile trade for a large app with
           many clients, and a poor one for a small app with a single screen shape.
@@ -89,7 +89,7 @@ export default function Apis() {
       <h3>How to choose, in order</h3>
       <ol>
         <li>
-          <b>Can the user tolerate being seconds behind?</b> Then poll — ideally through your
+          <b>Can the user tolerate being seconds behind?</b> Then poll, ideally through your
           query cache, which gives you refetch-on-focus and deduping for free. Simple, cacheable,
           survives any network, and no connection state to manage. This is the right answer far
           more often than it feels like.
@@ -97,7 +97,7 @@ export default function Apis() {
         <li>
           <b>Does only the server have news?</b> Use <b>SSE</b>. It is ordinary HTTP, so proxies,
           load balancers and auth cookies all just work, and <code>EventSource</code> reconnects
-          automatically — resuming from <code>Last-Event-ID</code> so you do not lose the messages
+          automatically, resuming from <code>Last-Event-ID</code> so you do not lose the messages
           sent while you were disconnected. Live prices, notifications, progress of a long job,
           telemetry feeds.
         </li>
@@ -113,10 +113,10 @@ export default function Apis() {
         head={["", "Server-sent events", "WebSocket"]}
         rows={[
           ["Direction", "Server → client only", "Both directions"],
-          ["Protocol", "Plain HTTP — proxies, CDNs and cookies work", "Upgraded connection; some corporate proxies block it"],
+          ["Protocol", "Plain HTTP: proxies, CDNs and cookies work", "Upgraded connection; some corporate proxies block it"],
           ["Reconnect", "Built in, with Last-Event-ID replay", "You write it: backoff, heartbeat, resubscribe, backfill"],
           ["Data", "UTF-8 text (so JSON)", "Text or binary"],
-          ["Connection limit", "6 per domain on HTTP/1.1 — a non-issue over HTTP/2", "Not multiplexed; one connection each"],
+          ["Connection limit", "6 per domain on HTTP/1.1, a non-issue over HTTP/2", "Not multiplexed; one connection each"],
           ["Load balancing", "Ordinary HTTP routing", "Sticky sessions or a shared pub/sub layer"],
           ["Good fit", "Dashboards, notifications, feeds, job progress", "Chat, collaboration, games, live control"],
         ]}
@@ -125,7 +125,7 @@ export default function Apis() {
       <Callout kind="good" title="The rule that settles most arguments">
         <p>
           If the client never needs to send anything on that channel, a WebSocket is a bidirectional
-          solution to a unidirectional problem — and you have taken on reconnection, heartbeats and
+          solution to a unidirectional problem, and you have taken on reconnection, heartbeats and
           sticky-session load balancing for a capability you are not using. <b>Default to SSE;
           upgrade to WebSocket when the client genuinely needs to talk back.</b>
         </p>
@@ -135,7 +135,7 @@ export default function Apis() {
         One note on protocol versions, since older material dwells on it: HTTP/2 made multiplexing
         standard, so the old trick of sharding assets across subdomains is obsolete and the six-
         connection limit no longer constrains SSE. HTTP/3 moves the whole thing onto QUIC, which
-        mainly helps on flaky mobile networks — packet loss in one stream no longer stalls the
+        mainly helps on flaky mobile networks, packet loss in one stream no longer stalls the
         others. Neither is a decision you make; both are a reason some old advice no longer applies.
       </p>
 
@@ -145,8 +145,8 @@ export default function Apis() {
       <p>
         <code>?page=2&amp;size=20</code> is computed from a position in a list that is still
         changing. If three posts are added while the user reads page one, page two starts three
-        items late and the user silently never sees them. A cursor —{" "}
-        <code>?after=eyJpZCI6...</code> — points at an item instead of a position, so it stays
+        items late and the user silently never sees them. A cursor,{" "}
+        <code>?after=eyJpZCI6...</code>, points at an item instead of a position, so it stays
         correct. For any feed that grows at the top, cursor pagination is not an optimisation,
         it is a correctness fix.
       </p>
@@ -161,8 +161,8 @@ export default function Apis() {
 
       <h3>Errors are part of the API design</h3>
       <p>
-        Decide the shape up front — a stable machine-readable <code>code</code>, a human message,
-        and a field map for validation errors — and make the transport layer translate every
+        Decide the shape up front, a stable machine-readable <code>code</code>, a human message,
+        and a field map for validation errors, and make the transport layer translate every
         failure into it, including network failures and timeouts, which have no HTTP status at
         all. Components should never branch on a status code.
       </p>
@@ -181,7 +181,7 @@ export default function Apis() {
           &ldquo;How does the UI stay up to date?&rdquo; is one of the most reliable questions in
           frontend system design, and the strongest answers are usually the least exotic. Start
           from how stale the data is allowed to be, state the number, then pick the cheapest
-          transport that meets it — and say what you would have to build if you picked the fancier
+          transport that meets it, and say what you would have to build if you picked the fancier
           one.
         </p>
       </Callout>

@@ -55,7 +55,7 @@ export default function Trace() {
 
       <text className="d-small" x={LX} y={274}>
         Without propagation you know the click took 1.2s. With it you know 700ms of that was one
-        database query — and which one.
+        database query, and which one.
       </text>
     </svg>
   );

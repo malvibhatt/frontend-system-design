@@ -16,13 +16,13 @@ const COLS = [
       "REST · GraphQL · RPC", "Pull or push?", "Pagination: cursor",
       "Errors, retries, auth"] },
   { k: "O", w: 245, tone: 1, name: "Optimisations", pct: 45, bullets: [
-      "Loading — splitting, prefetch, streaming",
-      "Rendering — virtualise, cut re-renders",
-      "Network — cache, dedupe, debounce",
-      "Resilience — retry, offline, error states",
-      "Accessibility — keyboard, contrast, ARIA",
-      "Security — XSS, CSP, token storage",
-      "Observability — Web Vitals, errors"] },
+      "Loading: splitting, prefetch, streaming",
+      "Rendering: virtualise, cut re-renders",
+      "Network: cache, dedupe, debounce",
+      "Resilience: retry, offline, error states",
+      "Accessibility: keyboard, contrast, ARIA",
+      "Security: XSS, CSP, token storage",
+      "Observability: Web Vitals, errors"] },
 ];
 
 const GAP = 10, X0 = 20;

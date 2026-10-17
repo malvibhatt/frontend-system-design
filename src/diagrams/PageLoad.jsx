@@ -5,7 +5,7 @@ const W = 118, GAP = 20, Y = 72, H = 64;
 const x = (i) => 20 + i * (W + GAP);
 
 const STAGES = [
-  { where: "network", tone: 2, title: "Find & connect",  sub: "DNS · TCP · TLS",      note: "~50–200ms" },
+  { where: "network", tone: 2, title: "Find & connect",  sub: "DNS · TCP · TLS",      note: "~50-200ms" },
   { where: "network", tone: 2, title: "Fetch HTML",      sub: "CDN edge or origin",   note: "TTFB" },
   { where: "browser", tone: 3, title: "Parse & fetch",   sub: "CSS + JS discovered",  note: "render-blocking" },
   { where: "browser", tone: 1, title: "First paint",     sub: "pixels on screen",     note: "FCP → LCP" },

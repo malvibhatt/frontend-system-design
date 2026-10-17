@@ -16,7 +16,7 @@ const PANELS = [
   {
     tone: 3, name: "REST, under-fetching", sub: "GET /users/42 → /users/42/posts",
     fields: ["id", "name", "email", "avatarUrl", "…", "then a second request", "for postCount"],
-    foot: "Two round trips in sequence — a waterfall.",
+    foot: "Two round trips in sequence: a waterfall.",
   },
   {
     tone: 2, name: "GraphQL", sub: "one query, three fields",
