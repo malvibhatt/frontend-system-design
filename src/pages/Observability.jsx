@@ -26,7 +26,7 @@ export default function Observability() {
       </Figure>
 
       <p>
-        <b>Field data</b> — Real User Monitoring — is this histogram: the same metric collected
+        <b>Field data</b>, Real User Monitoring, is this histogram: the same metric collected
         from every real session. You read it at percentiles, and the convention is{" "}
         <b>p75</b>: the experience of the unluckiest quarter of your users. Google uses p75 for
         Core Web Vitals specifically because it is slow enough to represent genuine pain and
@@ -49,7 +49,7 @@ export default function Observability() {
         interaction was handled, which made almost every site look fine. INP looks at the full
         duration of interactions across the entire visit, which is much closer to what people mean
         by &ldquo;this feels sluggish.&rdquo; Sites that scored well on FID often score badly on
-        INP — that is the metric working, not a regression.
+        INP. That is the metric working, not a regression.
       </p>
       <p>
         <b>TTI</b> (Time to Interactive) appears in older material as the headline number. It was
@@ -69,7 +69,7 @@ export default function Observability() {
       <p>
         Catch what reaches users: <code>window.onerror</code>, <code>unhandledrejection</code>,
         React error boundaries, and failed requests from your transport layer. Then do the step
-        that decides whether any of it is worth having — <b>upload source maps at build time</b>.
+        that decides whether any of it is worth having, <b>upload source maps at build time</b>.
         Without them, every production error is an unreadable stack through minified
         <code> a.b.c</code> frames, and your error tracker becomes a wall of noise everyone learns
         to ignore. Upload them privately; never deploy them to the public bundle.
@@ -89,7 +89,7 @@ export default function Observability() {
 
       <Figure caption={
         <>
-          <b>The browser starts the trace, not the server.</b> That is the part teams miss — the
+          <b>The browser starts the trace, not the server.</b> That is the part teams miss. The
           first 120ms and the last 95ms exist only if the frontend is instrumented.
         </>
       }>
@@ -104,8 +104,8 @@ export default function Observability() {
         your choice of vendor.
       </p>
       <p>
-        Add spans for the handful of interactions you actually care about — the checkout submit,
-        the dashboard load, the search — not for everything. A trace on every click produces cost
+        Add spans for the handful of interactions you actually care about, the checkout submit,
+        the dashboard load, the search, not for everything. A trace on every click produces cost
         without insight.
       </p>
 
@@ -121,8 +121,8 @@ export default function Observability() {
         rows={[
           ["Core Web Vitals", "100%", "One tiny payload per session; this is your baseline and you want the true distribution"],
           ["Errors", "100%, deduplicated", "Rare by nature. Group identical stacks rather than dropping them."],
-          ["Traces", "1–10%, plus 100% of failures", "Expensive and highly redundant when healthy. Always keep the ones that failed."],
-          ["Session replay", "A low percentage, or triggered on error", "The most expensive signal and the biggest privacy surface — mask inputs by default"],
+          ["Traces", "1-10%, plus 100% of failures", "Expensive and highly redundant when healthy. Always keep the ones that failed."],
+          ["Session replay", "A low percentage, or triggered on error", "The most expensive signal and the biggest privacy surface, mask inputs by default"],
           ["Custom product events", "100%, batched", "Send on an interval or on page hide, never one request per event"],
         ]}
       />
@@ -137,7 +137,7 @@ export default function Observability() {
       <p>
         An alert should describe something a user would complain about: <em>p75 LCP on the feed
         has been above 3 seconds for 15 minutes</em>, or <em>the checkout error rate tripled after
-        the 14:20 release</em>. Alerting on causes — CPU, bundle size, a single slow endpoint —
+        the 14:20 release</em>. Alerting on causes, CPU, bundle size, a single slow endpoint,
         produces pages nobody can act on and fatigue that makes the real alert get ignored.
       </p>
       <p>

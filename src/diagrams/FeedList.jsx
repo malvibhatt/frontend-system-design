@@ -52,7 +52,7 @@ export default function FeedList() {
       <line x1={330} y1={296} x2={630} y2={296}
             stroke="var(--d-line)" strokeWidth="1.5" strokeDasharray="4 3" />
       <text className="d-mono" x={330} y={312} style={{ fill: "var(--d-text)" }}>
-        sentinel — when it enters view, fetch ?after=cursor
+        sentinel, when it enters view, fetch ?after=cursor
       </text>
 
       {/* ---- the payoff ---- */}

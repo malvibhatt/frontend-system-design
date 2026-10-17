@@ -1,11 +1,11 @@
 import { Defs, Arrow } from "./svg.jsx";
 
 /* Optimistic update. The snapshot in step 1 is what makes the failure
-   branch possible at all — it is the step people leave out. */
+   branch possible at all. It is the step people leave out. */
 const LX = 20, LW = 320, LH = 52;
 const STEPS = [
   { y: 46,  t: "1 · Snapshot the cache", s: "remember the current value first", tone: 4 },
-  { y: 116, t: "2 · Update the UI now",  s: "0 ms — the click feels instant",   tone: 1 },
+  { y: 116, t: "2 · Update the UI now",  s: "0 ms, the click feels instant",   tone: 1 },
   { y: 186, t: "3 · Send the mutation",  s: "request in flight",                tone: 1 },
 ];
 
@@ -39,7 +39,7 @@ export default function Optimistic() {
         Invalidate the query so the real value replaces your guess.
       </text>
       <text className="d-small" x={RX + 16} y={204}>
-        Usually nothing visible changes — that is the point.
+        Usually nothing visible changes. That is the point.
       </text>
 
       <rect x={RX} y={244} width={RW} height={62} rx="8"

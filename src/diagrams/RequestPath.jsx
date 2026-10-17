@@ -8,9 +8,9 @@ const x = (i) => 20 + i * STEP;
 const HOPS = [
   { tone: 1, title: "Component",     lines: ["useQuery() / fetch()"],                      note: "asks" },
   { tone: 4, title: "Memory cache",  lines: ["TanStack Query, SWR,", "RTK Query"],          note: "~0 ms" },
-  { tone: 4, title: "Disk cache",    lines: ["Service worker +", "HTTP cache"],             note: "~1–5 ms" },
+  { tone: 4, title: "Disk cache",    lines: ["Service worker +", "HTTP cache"],             note: "~1-5 ms" },
   { tone: 2, title: "CDN edge",      lines: ["nearest city to", "the user"],                note: "~20 ms" },
-  { tone: 2, title: "Origin + DB",   lines: ["one region,", "one source of truth"],         note: "~100–300 ms" },
+  { tone: 2, title: "Origin + DB",   lines: ["one region,", "one source of truth"],         note: "~100-300 ms" },
 ];
 
 const END = x(4) + W;

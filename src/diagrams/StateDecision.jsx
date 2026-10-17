@@ -10,17 +10,17 @@ const ROWS = [
   { q: "Does it come from the server?",
     a: "Server-state cache", s: "TanStack Query · RTK Query · RSC", tone: 2 },
   { q: "Is it already in the URL? (tab, filters, page)",
-    a: "Leave it in the URL", s: "useSearchParams — shareable, survives refresh, free back button", tone: 2 },
+    a: "Leave it in the URL", s: "useSearchParams, shareable, survives refresh, free back button", tone: 2 },
   { q: "Is it used by exactly one component?",
     a: "useState / useReducer", s: "colocate it; this is the default, not a fallback", tone: 1 },
   { q: "Is it shared by a few nearby components?",
     a: "Lift to the nearest common parent", s: "still the cheapest correct answer", tone: 1 },
   { q: "Global, but changes rarely? (theme, locale, user)",
-    a: "Context", s: "every consumer re-renders on change — fine when change is rare", tone: 3 },
+    a: "Context", s: "every consumer re-renders on change, fine when change is rare", tone: 3 },
   { q: "Global and changes often? (cursor, live selection)",
-    a: "External store", s: "Zustand · Redux · signals — components subscribe to slices", tone: 3 },
+    a: "External store", s: "Zustand · Redux · signals, components subscribe to slices", tone: 3 },
   { q: "Are there lots of illegal in-between states?",
-    a: "State machine", s: "XState — makes the impossible states unrepresentable", tone: 4 },
+    a: "State machine", s: "XState: makes the impossible states unrepresentable", tone: 4 },
 ];
 
 export default function StateDecision() {

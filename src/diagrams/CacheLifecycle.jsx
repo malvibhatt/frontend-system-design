@@ -1,17 +1,17 @@
 import { Defs } from "./svg.jsx";
 
 /* The life of one cache entry. staleTime and gcTime answer different
-   questions and get confused constantly — hence two separate boundaries. */
+   questions and get confused constantly, hence two separate boundaries. */
 const X = 20, W = 840, BY = 96, BH = 38;
 const tx = (t) => X + t * W;
 
 const FRESH_END = 0.30, GC_END = 0.72;
 
 const MARKS = [
-  { t: 0,         row: 0, l: "fetched — written to cache" },
+  { t: 0,         row: 0, l: "fetched, written to cache" },
   { t: FRESH_END, row: 1, l: "staleTime ends" },
   { t: 0.55,      row: 0, l: "last component using it unmounts" },
-  { t: GC_END,    row: 1, l: "gcTime ends — entry evicted" },
+  { t: GC_END,    row: 1, l: "gcTime ends, entry evicted" },
 ];
 
 const ZONES = [
@@ -57,7 +57,7 @@ export default function CacheLifecycle() {
       <text className="d-small" x={X} y={240}>
         <tspan style={{ fill: "var(--d-text)" }}>staleTime</tspan> decides when to refetch.&nbsp;
         <tspan style={{ fill: "var(--d-text)" }}>gcTime</tspan> decides when to forget. Only the
-        second one frees memory — and only once nothing is using the entry.
+        second one frees memory, and only once nothing is using the entry.
       </text>
     </svg>
   );

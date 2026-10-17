@@ -7,7 +7,7 @@ export default function Cheatsheet() {
     <Page
       eyebrow="Reference"
       title="Cheatsheet"
-      lede="The whole guide compressed into what you would actually want in front of you — an hour before an interview, or on day one of designing something real."
+      lede="The whole guide compressed into what you would actually want in front of you, an hour before an interview, or on day one of designing something real."
     >
       <p>
         Everything here is explained properly elsewhere; this page assumes you have read it once
@@ -47,10 +47,10 @@ export default function Cheatsheet() {
         head={["If…", "Put it in", "Because"]}
         rows={[
           ["It comes from the server", "Query cache (TanStack, RTK Query, RSC)", "It can go stale; you need refetch, dedupe, invalidation"],
-          ["It is already in the URL — tab, filters, page", "useSearchParams", "Shareable, survives refresh, back button works"],
+          ["It is already in the URL: tab, filters, page", "useSearchParams", "Shareable, survives refresh, back button works"],
           ["One component uses it", "useState / useReducer", "Colocation is the default, not a fallback"],
           ["A few nearby components use it", "Nearest common parent", "Cheapest correct answer"],
-          ["Global, rarely changes (theme, user)", "Context", "No subscriptions — every consumer re-renders on change"],
+          ["Global, rarely changes (theme, user)", "Context", "No subscriptions: every consumer re-renders on change"],
           ["Global, changes often", "External store (Zustand, Redux, signals)", "Components subscribe to slices"],
           ["There are many illegal in-between states", "State machine (XState)", "Makes impossible states unrepresentable"],
         ]}
@@ -62,9 +62,9 @@ export default function Cheatsheet() {
         head={["If…", "Use", "You then own"]}
         rows={[
           ["Seconds-to-minutes of staleness is fine", "Polling via the query cache", "Nothing. This is the right answer more often than it feels."],
-          ["Only the server has news", "SSE", "Almost nothing — EventSource reconnects and replays via Last-Event-ID"],
+          ["Only the server has news", "SSE", "Almost nothing: EventSource reconnects and replays via Last-Event-ID"],
           ["Both sides send, frequently", "WebSocket", "Reconnect, heartbeat, resubscribe, backfill, sticky sessions"],
-          ["Updates are rare and the user can ask", "A refresh button", "Say this out loud — sometimes it is genuinely correct"],
+          ["Updates are rare and the user can ask", "A refresh button", "Say this out loud: sometimes it is genuinely correct"],
         ]}
       />
 
@@ -97,9 +97,9 @@ export default function Cheatsheet() {
 
       <h2>Numbers worth knowing</h2>
       <Numbers items={[
-        { value: "≤ 2.5s", label: "LCP at p75 — good" },
-        { value: "≤ 200ms", label: "INP at p75 — good (replaced FID, 2024)" },
-        { value: "≤ 0.1", label: "CLS at p75 — good" },
+        { value: "≤ 2.5s", label: "LCP at p75: good" },
+        { value: "≤ 200ms", label: "INP at p75: good (replaced FID, 2024)" },
+        { value: "≤ 0.1", label: "CLS at p75: good" },
         { value: "≤ 800ms", label: "TTFB target" },
         { value: "100ms", label: "Feels instant to a human" },
         { value: "1s", label: "Upper limit before flow breaks" },
@@ -116,24 +116,24 @@ export default function Cheatsheet() {
           "Reaching for WebSockets when nothing is sent upstream.",
           "No loading, empty, or error states anywhere in the design.",
           "Never mentioning accessibility or observability unprompted.",
-          <>Adjectives instead of numbers — &ldquo;fast&rdquo;, &ldquo;scalable&rdquo;, &ldquo;real-time&rdquo;.</>,
+          <>Adjectives instead of numbers, &ldquo;fast&rdquo;, &ldquo;scalable&rdquo;, &ldquo;real-time&rdquo;.</>,
           "Treating the happy path as the design and failure as an afterthought.",
         ]} />
         <SheetCard kind="say" title="Sentences that land" items={[
           <>&ldquo;How stale is this allowed to be?&rdquo;</>,
           <>&ldquo;That&rsquo;s server state, so it belongs in the query cache, not component state.&rdquo;</>,
           <>&ldquo;I&rsquo;d default to SSE and upgrade to a WebSocket only if the client needs to send.&rdquo;</>,
-          <>&ldquo;Cursor pagination — offsets are incorrect for a list that grows at the top.&rdquo;</>,
+          <>&ldquo;Cursor pagination, offsets are incorrect for a list that grows at the top.&rdquo;</>,
           <>&ldquo;If we can&rsquo;t keep up, here is what I would degrade first.&rdquo;</>,
           <>&ldquo;I&rsquo;d measure that at p75 from real sessions, not from Lighthouse.&rdquo;</>,
-          <>&ldquo;That&rsquo;s a trade — we gain X and pay Y. I&rsquo;d take it here because…&rdquo;</>,
+          <>&ldquo;That&rsquo;s a trade. We gain X and pay Y. I&rsquo;d take it here because…&rdquo;</>,
         ]} />
       </Sheet>
 
       <h2>Optimisations, grouped so you can recall them</h2>
       <Sheet>
         <SheetCard title="Loading" items={[
-          "Route-level code splitting — cut the import graph",
+          "Route-level code splitting, cut the import graph",
           "Server-render or stream the first screen",
           "Preload the LCP image; never lazy-load it",
           "Defer third-party scripts; they are rarely critical",
@@ -151,7 +151,7 @@ export default function Cheatsheet() {
           "Debounce input; throttle scroll and resize",
           "Dedupe in-flight requests by key",
           "Batch analytics; send with sendBeacon on page hide",
-          "Prefetch on hover or focus — intent is a free signal",
+          "Prefetch on hover or focus: intent is a free signal",
         ]} />
         <SheetCard title="Resilience and trust" items={[
           "Error boundary per independently-failing region",
@@ -161,7 +161,7 @@ export default function Cheatsheet() {
           "Decide what degrades first under load, before it happens",
         ]} />
         <SheetCard title="Accessibility" items={[
-          "Semantic elements before ARIA — a button, not a div",
+          "Semantic elements before ARIA: a button, not a div",
           "Keyboard path through every flow; visible focus",
           "Announce async changes in a live region",
           "rem units so browser zoom and font settings work",
@@ -172,7 +172,7 @@ export default function Cheatsheet() {
           "Tokens in httpOnly cookies, not localStorage",
           "A Content-Security-Policy that actually blocks inline script",
           "CORS set deliberately, not copied from a tutorial",
-          "Never ship source maps publicly — upload them to the error tracker",
+          "Never ship source maps publicly, upload them to the error tracker",
         ]} />
       </Sheet>
 
@@ -185,18 +185,18 @@ export default function Cheatsheet() {
         <>Write down two numbers: <b>how stale data may be</b>, and <b>how large the data gets</b>.</>,
         <>Sketch the screen. Name the components you see. This is your architecture&rsquo;s first draft.</>,
         <>Sort every piece of state into <b>server state</b> or <b>client state</b>. Decide where each lives.</>,
-        <>Pick the transport from your staleness number — not from what sounds impressive.</>,
+        <>Pick the transport from your staleness number, not from what sounds impressive.</>,
         <>Write the API contract including <b>pagination shape and error shape</b>, before building anything.</>,
         <>Pick the rendering strategy from SEO and first-paint needs.</>,
         <>List the <b>three</b> optimisations that matter for this specific system. Ignore the rest for now.</>,
         <>Decide what you will measure, and the one alert you would want paging you.</>,
-        <>Write down what degrades first under load — and make that degradation visible to the user.</>,
+        <>Write down what degrades first under load, and make that degradation visible to the user.</>,
       ]} />
 
       <Callout kind="good" title="If you remember one thing">
         <p>
           Every answer in frontend system design is a trade between <b>latency, freshness and
-          complexity</b>. Naming which one you are spending — and what you are buying with it — is
+          complexity</b>. Naming which one you are spending, and what you are buying with it, is
           the difference between describing a system and designing one.
         </p>
       </Callout>

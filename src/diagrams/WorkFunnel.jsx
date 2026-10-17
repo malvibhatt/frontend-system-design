@@ -38,7 +38,7 @@ export default function WorkFunnel() {
       <line x1={BX} y1={220} x2={BX + (7 / 100) * BW} y2={220}
             stroke="var(--d-line)" strokeWidth="3" />
       <text className="d-small" x={BX + 60} y={224} style={{ fill: "var(--d-text)" }}>
-        7 network requests out of 100 keystrokes — 93% of the work simply never happens.
+        7 network requests out of 100 keystrokes, 93% of the work simply never happens.
       </text>
     </svg>
   );

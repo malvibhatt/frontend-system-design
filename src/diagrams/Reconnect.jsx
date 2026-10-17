@@ -63,11 +63,11 @@ export default function Reconnect() {
 
       <rect x={tx(BACK)} y={BY + 84} width={tx(0.78) - tx(BACK)} height={26} rx="4"
             fill="var(--d-fill-4)" stroke="var(--d-box-line)" />
-      <text className="d-small" x={tx(BACK) + 10} y={BY + 101}>server replays 8843–8871</text>
+      <text className="d-small" x={tx(BACK) + 10} y={BY + 101}>server replays 8843-8871</text>
 
       <text className="d-small" x={X0} y={244}>
         What the user must see during the amber stretch: a &ldquo;reconnecting, data may be out of
-        date&rdquo; banner — not a frozen map that looks live.
+        date&rdquo; banner, not a frozen map that looks live.
       </text>
     </svg>
   );

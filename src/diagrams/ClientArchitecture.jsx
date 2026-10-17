@@ -21,15 +21,15 @@ export default function ClientArchitecture() {
             fill="none" stroke="var(--d-box-line)" strokeDasharray="5 4" />
       <text className="d-mono" x={22} y={24}>the browser</text>
 
-      {/* 1 — view */}
+      {/* 1, view */}
       <rect x={BX} y={50} width={BW} height={54} rx="8"
             fill="var(--d-fill-1)" stroke="var(--d-box-line)" />
       <text className="d-title" x={BX + BW / 2} y={72} textAnchor="middle">Components</text>
       <text className="d-small" x={BX + BW / 2} y={89} textAnchor="middle">
-        layout, markup, events — no fetching, no business rules
+        layout, markup, events, no fetching, no business rules
       </text>
 
-      {/* 2 — the two kinds of state */}
+      {/* 2. The two kinds of state */}
       <Arrow x1={140} y1={106} x2={140} y2={138} />
       <text className="d-mono" x={148} y={126}>events</text>
       <Arrow x1={450} y1={138} x2={450} y2={106} />
@@ -52,7 +52,7 @@ export default function ClientArchitecture() {
             fill="var(--d-fill-3)" stroke="var(--d-box-line)" />
       <text className="d-title" x={423} y={163} textAnchor="middle">Client state</text>
       <text className="d-small" x={423} y={181} textAnchor="middle">
-        yours alone — nobody
+        yours alone. Nobody
       </text>
       <text className="d-small" x={423} y={193} textAnchor="middle">
         else has a copy
@@ -68,7 +68,7 @@ export default function ClientArchitecture() {
         client state never touches the network
       </text>
 
-      {/* 3 — transport */}
+      {/* 3, transport */}
       <rect x={BX} y={258} width={BW} height={58} rx="8"
             fill="var(--d-fill-4)" stroke="var(--d-box-line)" />
       <text className="d-title" x={BX + BW / 2} y={281} textAnchor="middle">Transport layer</text>
@@ -76,7 +76,7 @@ export default function ClientArchitecture() {
         fetch wrapper · GraphQL client · WebSocket client
       </text>
 
-      {/* 4 — network */}
+      {/* 4, network */}
       <Arrow x1={290} y1={332} x2={290} y2={350} />
       <rect x={BX} y={352} width={BW} height={46} rx="8"
             fill="var(--d-box)" stroke="var(--d-box-line)" />

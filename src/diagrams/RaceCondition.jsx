@@ -1,7 +1,7 @@
 import { Defs } from "./svg.jsx";
 
 /* The bug that makes a typeahead show results for a query the user has
-   already finished typing — and the one-line fix. */
+   already finished typing, and the one-line fix. */
 const PW = 425, PH = 196, GAP = 20;
 const px = (i) => 20 + i * (PW + GAP);
 const T0 = 58, TW = 340, CY = 76, SY = 142;

@@ -10,7 +10,7 @@ export default function Caching() {
       lede="A cache is a deliberate decision to accept a possibly-wrong answer in exchange for a much faster one. Designing a cache is deciding exactly how wrong you are willing to be, and for how long."
     >
       <p>
-        Which means the first question is never &ldquo;should I cache this?&rdquo; — it is
+        Which means the first question is never &ldquo;should I cache this?&rdquo;. It is
         &ldquo;how out of date is this allowed to be before it does harm?&rdquo; That number is a
         product decision, not a technical one, and once you have it the technical choices mostly
         fall out.
@@ -20,10 +20,10 @@ export default function Caching() {
         strongFirst
         head={["Kind of data", "Acceptable staleness", "In practice"]}
         rows={[
-          ["Account balance, stock level, seat availability", "Zero — show the truth or show nothing", "No cache, or cache plus a live channel. Being wrong here costs money."],
+          ["Account balance, stock level, seat availability", "Zero: show the truth or show nothing", "No cache, or cache plus a live channel. Being wrong here costs money."],
           ["Live telemetry, vehicle positions", "A few seconds", "Push transport; cache only to survive reconnects"],
           ["A social feed", "Seconds to a minute", "Stale-while-revalidate. Nobody is harmed by a 20-second-old post."],
-          ["Search suggestions", "Minutes", "Cache hard and locally — the same prefix gives the same answers"],
+          ["Search suggestions", "Minutes", "Cache hard and locally: the same prefix gives the same answers"],
           ["User profile, settings, permissions", "Until the user changes them", "Cache indefinitely, invalidate on mutation"],
           ["Country list, currency codes, icons", "Days", "Cache aggressively; version it in the URL"],
         ]}
@@ -38,7 +38,7 @@ export default function Caching() {
 
       <Figure caption={
         <>
-          <b>The middle zone is the whole trick.</b> Stale does not mean unusable — it means
+          <b>The middle zone is the whole trick.</b> Stale does not mean unusable. It means
           &ldquo;show it immediately, and go check.&rdquo;
         </>
       }>
@@ -66,7 +66,7 @@ export default function Caching() {
       </p>
       <ul>
         <li>
-          <b>In HTTP</b>, as a response header — <code>Cache-Control: max-age=60,
+          <b>In HTTP</b>, as a response header, <code>Cache-Control: max-age=60,
           stale-while-revalidate=600</code>. For ten minutes after expiry, the browser or CDN
           serves the stale copy instantly and revalidates behind the scenes. No JavaScript involved.
         </li>
@@ -88,12 +88,12 @@ export default function Caching() {
         </li>
         <li>
           <b>Interaction.</b> The window regained focus, the network came back, the component
-          remounted. The user is looking again — this is the moment to check, and it is free.
+          remounted. The user is looking again. This is the moment to check, and it is free.
         </li>
         <li>
           <b>Mutation.</b> You just changed something, so you <em>know</em> which cached entries
           are now wrong. Invalidate those keys precisely. This is the strongest signal and the
-          one that keeps a UI coherent — delete a post and the feed that contained it must be
+          one that keeps a UI coherent, delete a post and the feed that contained it must be
           invalidated too, or the user deletes something that stays on screen.
         </li>
       </ol>
@@ -110,8 +110,8 @@ export default function Caching() {
 
       <h2>Optimistic updates</h2>
       <p>
-        The strongest version of &ldquo;answer from closer to the user&rdquo; is not to ask at all
-        — write the answer you expect straight into the cache, then reconcile.
+        The strongest version of &ldquo;answer from closer to the user&rdquo; is not to ask at all,
+        write the answer you expect straight into the cache, then reconcile.
       </p>
 
       <Figure caption={
@@ -126,7 +126,7 @@ export default function Caching() {
 
       <p>
         Use it where success is overwhelmingly likely and the action is reversible. Avoid it
-        where being wrong is expensive or public — payments, deletions, anything another person
+        where being wrong is expensive or public, payments, deletions, anything another person
         sees immediately. And be careful with rapid repeated actions: a user double-tapping a
         like button can produce two in-flight mutations whose responses arrive out of order, so
         cancel any outgoing refetch for that key before applying the optimistic write.
@@ -142,7 +142,7 @@ export default function Caching() {
         head={["What", "Header", "Why"]}
         rows={[
           ["Hashed build assets (app.4f2a9.js)", "Cache-Control: public, max-age=31536000, immutable", "The filename changes when the content changes, so it can never be wrong. Cache it for a year."],
-          ["index.html", "Cache-Control: no-cache", "Must be revalidated every time — it is what points at the hashed assets."],
+          ["index.html", "Cache-Control: no-cache", "Must be revalidated every time. It is what points at the hashed assets."],
           ["API responses", "max-age, often with stale-while-revalidate", "Per-endpoint decision, driven by the staleness table above."],
         ]}
       />
@@ -161,9 +161,9 @@ export default function Caching() {
         strongFirst
         head={["", "Good for", "Watch out"]}
         rows={[
-          ["localStorage", "Small, simple values: theme, last-used filter, a draft", "Synchronous — it blocks the main thread. ~5 MB. Strings only. Never put tokens here."],
+          ["localStorage", "Small, simple values: theme, last-used filter, a draft", "Synchronous: it blocks the main thread. ~5 MB. Strings only. Never put tokens here."],
           ["IndexedDB", "Real datasets: cached lists, offline queues, attachments", "Asynchronous and awkward by hand; use a wrapper. This is where a persisted query cache belongs."],
-          ["Service worker + Cache API", "Making the app shell and assets work offline", "A deployment concern — a badly scoped service worker can serve a stale app for days."],
+          ["Service worker + Cache API", "Making the app shell and assets work offline", "A deployment concern: a badly scoped service worker can serve a stale app for days."],
         ]}
       />
       <p>

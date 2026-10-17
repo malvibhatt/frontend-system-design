@@ -30,7 +30,7 @@ const PANELS = [
       { t: 0.68, dir: "d", l: "GET" },
     ],
     holds: [[0.10, 0.60], [0.76, 1.0]],
-    note: "No wasted trips, near-instant delivery — but a held connection per client.",
+    note: "No wasted trips, near-instant delivery, but a held connection per client.",
   },
   {
     name: "Server-sent events", tone: 2,

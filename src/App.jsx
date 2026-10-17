@@ -6,7 +6,7 @@ import { allRoutes } from "./routes.jsx";
 export default function App() {
   const { pathname } = useLocation();
 
-  // Each page is a fresh document — start it at the top.
+  // Each page is a fresh document, start it at the top.
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
   return (
